@@ -1,20 +1,18 @@
 import { Request, Response } from "express";
 
-import { Login } from "./auth/LoginController";
-import { SignupController } from "./auth/SignupController";
+import LoginController from "./auth/LoginController";
+import SignupController from "./auth/SignupController";
 
-class UserController {
-
-    constructor() {}
+export default class UserController {
 
     public async login(req: Request, res: Response):Promise <void> {
-        Login(req, res)
+        const loginController = new LoginController();
+        loginController.main(req, res);
     }
 
     public async createUser(req: Request, res: Response):Promise <void> {
-        SignupController(req, res)
+        const signupController = new SignupController();
+        signupController.main(req, res);
     }
 
 }
-
-export default UserController;

@@ -1,35 +1,15 @@
+import { Model, DataTypes } from 'sequelize';
+import { Sequelize } from "sequelize";
+import bcrypt from "bcrypt";
 
-class User{
+interface UserAttributes {
+    id: number;
+    name: string;
+    email: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
 
-    private email: string;
-    private username: string;
-    private password: string;
-
-    constructor(email: string, username: string, password: string) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.main();
-    }
-
-    public main() {
-        this.getEmail();
-        this.getUsername();
-        this.getPassword();
-    }
-
-    private getEmail():string {
-        return this.email;
-    }
-
-    private getUsername():string {
-        return this.username;
-    }
-
-    private getPassword():string {
-        return this.password;
-    }
+export default class User extends Model<UserAttributes> implements UserAttributes {
 
 }
-
-export default User;
